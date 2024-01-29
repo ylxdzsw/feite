@@ -1,0 +1,14 @@
+name: CI
+on: [push, pull_request]
+
+jobs:
+  test:
+    name: Test
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: dtolnay/rust-toolchain@stable
+      - uses: KyleMayes/install-llvm-action@v1
+        with:
+          version: "16.0"
+      - run: cargo test
